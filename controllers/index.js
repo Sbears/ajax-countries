@@ -25,11 +25,26 @@ var indexController = {
 		}
 		res.send(searchResults);
 		});
-
-
-
 		
 	},
+
+	traveled: function(req, res) {
+		console.log(req.query.checkId);
+		var id = req.query.checkId;
+		countries.find({_id: id}, function(err, results){
+			
+			 
+			console.log(results.hasTraveled);
+			// if (results.hasTraveled === false) {
+			// 	 countries.update({_id: id}, {hasTraveled: true});
+			// } else {
+			// 	countries.update({_id: id}, {hasTraveled: false});
+			// }
+			// var result = results.hasTraveled;
+			res.send(results);
+		});
+		
+	}
 
 
 

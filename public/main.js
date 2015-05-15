@@ -20,15 +20,23 @@ $('#submit-search').on('click', function() {
 	$('#search-field').val('');
 
 	$.get('/search', {searchCriterea:searchCriterea}, function(dataFromServer) {
-			console.log('dataFromServer[0].frenchName', dataFromServer[0].frenchName);
+			console.log('dataFromServer[0].frenchName: ', dataFromServer[0].frenchName);
 		for (var i = 0; i < dataFromServer.length; i++) {
-			$('#view-search').append('<tr class="search-info"><td> <input type="checkbox" class="has-traveled"> </td><td>'  + dataFromServer[i].name + '</td><td>'  + dataFromServer[i].frenchName + '</td><td>'  + dataFromServer[i].localName + '</td><td>'  + dataFromServer[i].region + '</td></tr>' );
+			$('#view-search').append('<tr class="search-info"><td> <input type="checkbox" id='+dataFromServer[i]._id+ ' class="has-traveled"> </td><td>'  + dataFromServer[i].name + '</td><td>'  + dataFromServer[i].frenchName + '</td><td>'  + dataFromServer[i].localName + '</td><td>'  + dataFromServer[i].region + '</td></tr>' );
 		}
 	});
 });
 
 $(document).on('click','.has-traveled', function(){
-	
+	var checkId = $(this).attr('id');
+	var hasTraveled = $(this).prop('checked');
+	// console.log('id ', checkId); 
+	// console.log('checked: ', hasTraveled);
+
+	$.get('/traveled', {checkId:checkId, hasTraveled:hasTraveled}, function(dataFromServer){
+			console.log('dataFromServer: ', dataFromServer);
+
+	});
 });
 
 

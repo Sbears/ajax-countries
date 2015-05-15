@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.get('/', indexController.index);
 app.get('/countries', indexController.countries);
 app.get('/search', indexController.search);
+app.get('/traveled', indexController.traveled);
 
 var server = app.listen(5274, function() {
 	console.log('Express server listening on port ' + server.address().port);
