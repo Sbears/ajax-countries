@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	.container
+		.container
+			h1 Country Country!
+
+
+		.container
+
+			input#search-field(type="text" name="search" placeholder="search-criteria")
+			button#submit-search search
+
+		.container
+			table.table.table-striped
+				thead
+					tr
+						th Fl
+						th Country
+						th French Name
+						th Local Name
+						th Region
+				tbody#view-search
+					
+
+		.container
+			button#load-countries Load Countries
+
+			ul#countryList
+		
