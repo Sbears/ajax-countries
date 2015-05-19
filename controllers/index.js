@@ -29,18 +29,11 @@ var indexController = {
 	},
 
 	traveled: function(req, res) {
-		console.log(req.query.checkId);
+		console.log(req.query.hasTraveled);
 		var id = req.query.checkId;
-		countries.find({_id: id}, function(err, results){
-			
-			 
-			console.log(results.hasTraveled);
-			// if (results.hasTraveled === false) {
-			// 	 countries.update({_id: id}, {hasTraveled: true});
-			// } else {
-			// 	countries.update({_id: id}, {hasTraveled: false});
-			// }
-			// var result = results.hasTraveled;
+		countries.findById(id, function(err, results){
+			results.hasTraveled = req.query.hasTraveled;
+			results.save();
 			res.send(results);
 		});
 		
